@@ -1,22 +1,16 @@
 /* Palette ispirata all'immagine: lapislazzuli, avorio, terra d'ombra */
-:root{
-  --bg:#f8f6f1; --ink:#22201c; --muted:#77716a; --line:#e3ddd2;
-  --accent:#2c4a87; --banner-veil:rgba(248,246,241,0);
-  --font:"Avenir Next","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-[data-tema="scuro"]{
-  --bg:#14161b; --ink:#e4e0d8; --muted:#948e85; --line:#2a2d35;
-  --accent:#9db3e3; --banner-veil:rgba(20,22,27,.35);
-}
+:root{--bg:#f8f6f1;--ink:#22201c;--muted:#77716a;--line:#e3ddd2;--accent:#2c4a87;--veil:rgba(0,0,0,0);
+  --font:"Avenir Next","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif}
+[data-tema="scuro"]{--bg:#14161b;--ink:#e4e0d8;--muted:#948e85;--line:#2a2d35;--accent:#9db3e3;--veil:rgba(20,22,27,.3)}
 *{box-sizing:border-box}
 html{background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
-  font-size:18px;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;
-  transition:background .3s,color .3s}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:18px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
 a{color:var(--accent);text-decoration:none}
 a:hover{text-decoration:underline;text-underline-offset:3px}
 
-.banner{height:110px;background:linear-gradient(var(--banner-veil),var(--banner-veil)),url(intestazione.jpg) center 42%/cover no-repeat}
+/* Immagine: fascia in alto su schermi piccoli */
+.banner{height:110px;background:linear-gradient(var(--veil),var(--veil)),url(intestazione.jpg) center 42%/cover no-repeat}
 body.home .banner{height:min(46vh,420px)}
 
 .testata,main,footer{max-width:760px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
@@ -31,14 +25,11 @@ nav a[aria-current]{color:var(--ink)}
 #tema:hover{color:var(--ink)}
 
 main{padding-top:2.8rem;padding-bottom:3rem;min-height:50vh}
-h1{font-weight:300;font-size:2rem;line-height:1.25;letter-spacing:.01em;margin:0 0 1.6rem}
-h2{font-weight:400;font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;margin:0 0 .6rem}
-h2 a{color:var(--muted)}
+h1{font-weight:300;font-size:2rem;line-height:1.25;margin:0 0 1.6rem}
 .vh{position:absolute;left:-9999px}
 .sopratitolo{font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0 0 .4rem}
 .sopratitolo a{color:var(--muted)}
 
-.gruppo{margin-bottom:2.4rem}
 .elenco{list-style:none;padding:0;margin:0}
 .elenco li{padding:.45rem 0;border-bottom:1px solid var(--line)}
 .elenco li:last-child{border-bottom:0}
@@ -49,6 +40,7 @@ h2 a{color:var(--muted)}
 .raccolte{list-style:none;padding:0;margin:0}
 .raccolte li{display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--line)}
 .raccolte a{color:var(--ink);font-size:1.3rem;font-weight:300}
+.raccolte a:hover{color:var(--accent);text-decoration:none}
 .raccolte .num{display:inline-block;width:2.2rem;color:var(--muted);font-size:.8rem}
 .conta{color:var(--muted);font-size:.8rem}
 
@@ -58,8 +50,7 @@ h2 a{color:var(--muted)}
 .sfoglia{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem}
 
 .ricerca{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1rem}
-.ricerca input,.ricerca select{font:inherit;font-size:1rem;color:var(--ink);background:transparent;
-  border:0;border-bottom:1px solid var(--muted);padding:.4rem 0;outline:none}
+.ricerca input,.ricerca select{font:inherit;font-size:1rem;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--muted);padding:.4rem 0;outline:none}
 .ricerca input{flex:1 1 260px}
 .ricerca input:focus,.ricerca select:focus{border-color:var(--accent)}
 .ricerca select option{background:var(--bg)}
@@ -68,3 +59,9 @@ h2 a{color:var(--muted)}
 .contatti li{padding:.3rem 0}
 footer{color:var(--muted);font-size:.75rem;letter-spacing:.06em;padding-top:1.4rem;padding-bottom:2rem;border-top:1px solid var(--line)}
 @media(max-width:600px){body{font-size:17px}h1{font-size:1.6rem}.banner{height:80px}body.home .banner{height:34vh}}
+
+/* Schermi larghi: l'immagine diventa una colonna fissa sul lato sinistro */
+@media(min-width:1000px){
+  .banner,body.home .banner{position:fixed;top:0;left:0;bottom:0;width:34vw;height:auto;background-position:center 60%}
+  .testata,main,footer{margin-left:calc(34vw + 4.5rem);margin-right:2rem;max-width:720px}
+}

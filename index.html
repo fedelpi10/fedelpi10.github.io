@@ -2,12 +2,8 @@
 layout: default
 ---
 <h1 class="vh">{{ site.title }}</h1>
+<ul class="raccolte">
 {% for r in site.data.raccolte %}
-{% assign lista = site.poesie | where: "raccolta", r.slug | sort: "ordine" %}
-{% if lista.size > 0 %}
-<section class="gruppo">
-  <h2><a href="{{ '/raccolte/' | append: r.slug | append: '/' | relative_url }}">{{ r.nome }}</a></h2>
-  <ul class="elenco">{% for p in lista %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul>
-</section>
-{% endif %}
+<li><a href="{{ '/raccolte/' | append: r.slug | append: '/' | relative_url }}"><span class="num">{{ forloop.index }}</span>{{ r.nome }}</a></li>
 {% endfor %}
+</ul>

@@ -9,7 +9,7 @@ permalink: /cerca/
   <select id="f"><option value="">Tutte le raccolte</option>{% for r in site.data.raccolte %}<option value="{{ r.slug }}">{{ r.nome }}</option>{% endfor %}</select>
 </div>
 <p id="stato" class="sopratitolo"></p>
-<ul id="ris" class="elenco risultati"></ul>
+<ul id="ris" class="elenco"></ul>
 <script>
 (function(){
 var D=[],q=document.getElementById('q'),f=document.getElementById('f'),ris=document.getElementById('ris'),st=document.getElementById('stato');
@@ -25,7 +25,7 @@ function run(){
     if(i>-1){var a=Math.max(0,i-40);ex=(a>0?'…':'')+d.c.substr(a,t.length+90)+'…'}
     ris.insertAdjacentHTML('beforeend','<li><a href="'+d.u+'">'+esc(d.t)+'</a><span>'+esc(d.r||'')+(ex?' · '+esc(ex):'')+'</span></li>')});
 }
-fetch('{{ "/search.json" | relative_url }}').then(function(x){return x.json()}).then(function(j){D=j;var p=new URLSearchParams(location.search).get('q');if(p){q.value=p}run()});
+fetch('{{ "/search.json" | relative_url }}').then(function(x){return x.json()}).then(function(j){D=j;run()});
 q.addEventListener('input',run);f.addEventListener('change',run);q.focus();
 })();
 </script>
