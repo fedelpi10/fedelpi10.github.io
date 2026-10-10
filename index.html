@@ -1,12 +1,13 @@
 ---
 layout: default
 ---
-<h1>{{ site.title }}</h1>
-<p class="meta">{{ site.description }}</p>
-<ul class="elenco">
-{% assign lista = site.poesie | sort: "date" | reverse %}
-{% for p in lista %}
-  <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-  <span>{% if p.traduzione %}traduzione{% else %}poesia{% endif %}{% if p.date %} · {{ p.date | date: "%d/%m/%Y" }}{% endif %}</span></li>
+<h1 class="vh">{{ site.title }}</h1>
+{% for r in site.data.raccolte %}
+{% assign lista = site.poesie | where: "raccolta", r.slug | sort: "ordine" %}
+{% if lista.size > 0 %}
+<section class="gruppo">
+  <h2><a href="{{ '/raccolte/' | append: r.slug | append: '/' | relative_url }}">{{ r.nome }}</a></h2>
+  <ul class="elenco">{% for p in lista %}<li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>{% endfor %}</ul>
+</section>
+{% endif %}
 {% endfor %}
-</ul>

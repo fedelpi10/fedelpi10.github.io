@@ -1,20 +1,70 @@
-:root{--ink:#222;--muted:#777;--accent:#8a3b2e;--bg:#fcfaf6}
+/* Palette ispirata all'immagine: lapislazzuli, avorio, terra d'ombra */
+:root{
+  --bg:#f8f6f1; --ink:#22201c; --muted:#77716a; --line:#e3ddd2;
+  --accent:#2c4a87; --banner-veil:rgba(248,246,241,0);
+  --font:"Avenir Next","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+[data-tema="scuro"]{
+  --bg:#14161b; --ink:#e4e0d8; --muted:#948e85; --line:#2a2d35;
+  --accent:#9db3e3; --banner-veil:rgba(20,22,27,.35);
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.7 Georgia,"Times New Roman",serif}
-header,main,footer{max-width:980px;margin:0 auto;padding:1.2rem 1.5rem}
-header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #e5e0d8}
-.brand{font-size:1.3rem;color:var(--ink);text-decoration:none}
-nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none}
-a{color:var(--accent)}
-h1{font-weight:normal;font-size:2rem;margin-bottom:.2rem}
-h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:normal}
-.meta{color:var(--muted);font-style:italic;margin-top:0}
-.versi{white-space:pre-line}
-.versi p{margin:0 0 1.2em}
-.affiancate{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
-@media(max-width:700px){.affiancate{grid-template-columns:1fr;gap:1rem}}
-.nota{border-left:3px solid var(--accent);padding-left:1rem;color:var(--muted);font-size:.9em}
-.elenco{list-style:none;padding:0}
-.elenco li{padding:.6rem 0;border-bottom:1px solid #eee}
-.elenco span{display:block;color:var(--muted);font-size:.8em}
-footer{color:var(--muted);font-size:.8rem;border-top:1px solid #e5e0d8;margin-top:3rem}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:18px;line-height:1.75;font-weight:400;-webkit-font-smoothing:antialiased;
+  transition:background .3s,color .3s}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+
+.banner{height:110px;background:linear-gradient(var(--banner-veil),var(--banner-veil)),url(intestazione.jpg) center 42%/cover no-repeat}
+body.home .banner{height:min(46vh,420px)}
+
+.testata,main,footer{max-width:760px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
+.testata{display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;align-items:baseline;
+  padding-top:1.6rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.marchio{color:var(--ink);font-size:1.45rem;font-weight:300;letter-spacing:.04em}
+.marchio:hover{text-decoration:none}
+nav{display:flex;flex-wrap:wrap;align-items:baseline;gap:1.2rem}
+nav a{color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.14em}
+nav a[aria-current]{color:var(--ink)}
+#tema{background:none;border:0;color:var(--muted);font-size:1rem;cursor:pointer;padding:0}
+#tema:hover{color:var(--ink)}
+
+main{padding-top:2.8rem;padding-bottom:3rem;min-height:50vh}
+h1{font-weight:300;font-size:2rem;line-height:1.25;letter-spacing:.01em;margin:0 0 1.6rem}
+h2{font-weight:400;font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;margin:0 0 .6rem}
+h2 a{color:var(--muted)}
+.vh{position:absolute;left:-9999px}
+.sopratitolo{font-size:.75rem;text-transform:uppercase;letter-spacing:.16em;color:var(--muted);margin:0 0 .4rem}
+.sopratitolo a{color:var(--muted)}
+
+.gruppo{margin-bottom:2.4rem}
+.elenco{list-style:none;padding:0;margin:0}
+.elenco li{padding:.45rem 0;border-bottom:1px solid var(--line)}
+.elenco li:last-child{border-bottom:0}
+.elenco a{color:var(--ink)}
+.elenco a:hover{color:var(--accent)}
+.elenco span{display:block;color:var(--muted);font-size:.8rem;line-height:1.5}
+
+.raccolte{list-style:none;padding:0;margin:0}
+.raccolte li{display:flex;justify-content:space-between;align-items:baseline;padding:1rem 0;border-bottom:1px solid var(--line)}
+.raccolte a{color:var(--ink);font-size:1.3rem;font-weight:300}
+.raccolte .num{display:inline-block;width:2.2rem;color:var(--muted);font-size:.8rem}
+.conta{color:var(--muted);font-size:.8rem}
+
+.poesia h1{margin-bottom:2rem}
+.versi{white-space:pre-line;font-size:1.08rem;line-height:1.9;max-width:36em}
+.versi p{margin:0 0 1.6em}
+.sfoglia{display:flex;justify-content:space-between;gap:1rem;margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem}
+
+.ricerca{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1rem}
+.ricerca input,.ricerca select{font:inherit;font-size:1rem;color:var(--ink);background:transparent;
+  border:0;border-bottom:1px solid var(--muted);padding:.4rem 0;outline:none}
+.ricerca input{flex:1 1 260px}
+.ricerca input:focus,.ricerca select:focus{border-color:var(--accent)}
+.ricerca select option{background:var(--bg)}
+
+.contatti{list-style:none;padding:0}
+.contatti li{padding:.3rem 0}
+footer{color:var(--muted);font-size:.75rem;letter-spacing:.06em;padding-top:1.4rem;padding-bottom:2rem;border-top:1px solid var(--line)}
+@media(max-width:600px){body{font-size:17px}h1{font-size:1.6rem}.banner{height:80px}body.home .banner{height:34vh}}
