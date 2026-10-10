@@ -1,0 +1,7 @@
+title: "Poesie e traduzioni"
+description: "Versi originali e traduzioni"
+lang: it
+collections:
+  poesie:
+    output: true
+    permalink: /poesie/:name/

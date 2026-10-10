@@ -1,0 +1,20 @@
+:root{--ink:#222;--muted:#777;--accent:#8a3b2e;--bg:#fcfaf6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.7 Georgia,"Times New Roman",serif}
+header,main,footer{max-width:980px;margin:0 auto;padding:1.2rem 1.5rem}
+header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #e5e0d8}
+.brand{font-size:1.3rem;color:var(--ink);text-decoration:none}
+nav a{margin-left:1.2rem;color:var(--muted);text-decoration:none}
+a{color:var(--accent)}
+h1{font-weight:normal;font-size:2rem;margin-bottom:.2rem}
+h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:normal}
+.meta{color:var(--muted);font-style:italic;margin-top:0}
+.versi{white-space:pre-line}
+.versi p{margin:0 0 1.2em}
+.affiancate{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media(max-width:700px){.affiancate{grid-template-columns:1fr;gap:1rem}}
+.nota{border-left:3px solid var(--accent);padding-left:1rem;color:var(--muted);font-size:.9em}
+.elenco{list-style:none;padding:0}
+.elenco li{padding:.6rem 0;border-bottom:1px solid #eee}
+.elenco span{display:block;color:var(--muted);font-size:.8em}
+footer{color:var(--muted);font-size:.8rem;border-top:1px solid #e5e0d8;margin-top:3rem}

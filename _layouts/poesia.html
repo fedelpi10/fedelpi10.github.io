@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article>
+<h1>{{ page.title }}</h1>
+<p class="meta">{% if page.autore %}{{ page.autore }}{% endif %}{% if page.traduttore %} · traduzione di {{ page.traduttore }}{% endif %}</p>
+{% if page.originale and page.traduzione %}
+<div class="affiancate">
+  <section><h2>{{ page.lingua_originale | default: "Originale" }}</h2><div class="versi">{{ page.originale }}</div></section>
+  <section><h2>{{ page.lingua_traduzione | default: "Traduzione" }}</h2><div class="versi">{{ page.traduzione }}</div></section>
+</div>
+{% else %}
+<div class="versi">{{ content }}</div>
+{% endif %}
+{% if page.nota %}<p class="nota">{{ page.nota }}</p>{% endif %}
+<p><a href="{{ '/' | relative_url }}">← Tutte le poesie</a></p>
+</article>
